@@ -1,8 +1,8 @@
-# Pipeline de Gastos Pessoais — Arquitetura Medalhão (Bronze/Silver/Gold)
+# Pipeline de Gastos Pessoais, Arquitetura Medalhão (Bronze/Silver/Gold)
 
 Pipeline de dados end-to-end construído no **Databricks Free Edition**, usando **PySpark** e **Delta Lake**, aplicado a um problema real: entender meus próprios gastos a partir do extrato do cartão.
 
-O objetivo não foi só processar dados — foi praticar decisões de engenharia de dados que se aplicam em qualquer contexto de negócio: schema explícito, arquitetura em camadas, tratamento de dado sujo, e escolhas de modelagem justificadas.
+O objetivo não foi só processar dados, foi praticar decisões de engenharia de dados que se aplicam em qualquer contexto de negócio: schema explícito, arquitetura em camadas, tratamento de dado sujo, e escolhas de modelagem justificadas.
 
 > **Nota sobre os dados:** o CSV incluso (`data/exemplo_fake.csv`) é **fictício**, gerado com a mesma estrutura e os mesmos padrões do extrato real usado no desenvolvimento (formato de data, campos com IOF, valores em vírgula decimal). Nenhum dado financeiro real está neste repositório.
 
