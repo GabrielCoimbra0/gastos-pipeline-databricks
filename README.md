@@ -37,7 +37,7 @@ Compras internacionais no extrato geram uma cobrança de IOF separada e, na maio
 Ao aplicar a regra `descricao.startswith("IOF de")`, transações claramente com "IOF de..." no texto continuavam caindo na categoria padrão (`compra`). Investigando com `repr()` em vez de `display()` (que formata e esconde caracteres), foi possível identificar que o campo `descricao` vinha com aspas duplas residuais do escaping do CSV (ex: `"IOF de ""Uber *Trip..."""`), então a string começava com `"` em vez de `I`, quebrando o `startswith`. Corrigido com `regexp_replace` para remover as aspas externas e desfazer o escaping (`""` → `"`) antes da classificação.
 
 **Ordem importa em condições encadeadas (`when`/`otherwise`).**
-O padrão "IOF de volta de..." (estorno) também começa com "IOF de", então precisou ser verificado *antes* da regra mais genérica — senão a condição genérica capturava o caso específico primeiro e o estorno nunca era alcançado.
+O padrão "IOF de volta de..." (estorno) também começa com "IOF de", então precisou ser verificado *antes* da regra mais genérica, senão a condição genérica capturava o caso específico primeiro e o estorno nunca era alcançado.
 
 **Formatação numérica brasileira.**
 Valores acima de mil vêm com ponto como separador de milhar e vírgula como decimal (ex: `9.041,15`). A limpeza precisou remover o ponto de milhar *antes* de trocar a vírgula por ponto decimal, na ordem inversa, o resultado ficava malformado (dois pontos).
