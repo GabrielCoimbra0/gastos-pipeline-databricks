@@ -40,7 +40,7 @@ Ao aplicar a regra `descricao.startswith("IOF de")`, transações claramente com
 O padrão "IOF de volta de..." (estorno) também começa com "IOF de", então precisou ser verificado *antes* da regra mais genérica — senão a condição genérica capturava o caso específico primeiro e o estorno nunca era alcançado.
 
 **Formatação numérica brasileira.**
-Valores acima de mil vêm com ponto como separador de milhar e vírgula como decimal (ex: `9.041,15`). A limpeza precisou remover o ponto de milhar *antes* de trocar a vírgula por ponto decimal — na ordem inversa, o resultado ficava malformado (dois pontos).
+Valores acima de mil vêm com ponto como separador de milhar e vírgula como decimal (ex: `9.041,15`). A limpeza precisou remover o ponto de milhar *antes* de trocar a vírgula por ponto decimal, na ordem inversa, o resultado ficava malformado (dois pontos).
 
 ## Stack
 
