@@ -26,10 +26,10 @@ Organização no Unity Catalog: um catalog (`gastos_prj`) com um schema por cama
 O campo de valor vem como texto formatado (`"84,80"`, com vírgula decimal e aspas). Deixar o Spark inferir o tipo automaticamente arrisca interpretar a coluna errado. Definir o schema manualmente também evita que o Spark precise escanear o arquivo inteiro só para adivinhar tipos.
 
 **Por que manter tudo como `String` na Bronze, mesmo sabendo que um campo é numérico?**
-A regra da camada Bronze é fidelidade total ao dado original — nenhuma interpretação. A conversão de tipo é uma transformação, e transformação é responsabilidade da Silver.
+A regra da camada Bronze é fidelidade total ao dado original, nenhuma interpretação. A conversão de tipo é uma transformação, e transformação é responsabilidade da Silver.
 
 **Por que classificar `tipo_transacao` em `compra`, `imposto` e `estorno_imposto`, em vez de simplesmente somar tudo?**
-Compras internacionais no extrato geram uma cobrança de IOF separada — e, na maioria dos casos, um estorno posterior desse mesmo IOF. Em vez de descartar essas linhas ou somá-las cegamente ao gasto, optei por **preservar a granularidade**: cada tipo fica marcado, e a decisão de incluir ou excluir o IOF de uma métrica específica é feita na camada Gold, não na Silver. Isso evita perder informação de negócio (no caso, o insight de que quase 100% do IOF cobrado costuma ser devolvido).
+Compras internacionais no extrato geram uma cobrança de IOF separada e, na maioria dos casos, um estorno posterior desse mesmo IOF. Em vez de descartar essas linhas ou somá-las cegamente ao gasto, optei por **preservar a granularidade**: cada tipo fica marcado, e a decisão de incluir ou excluir o IOF de uma métrica específica é feita na camada Gold, não na Silver. Isso evita perder informação de negócio (no caso, o insight de que quase 100% do IOF cobrado costuma ser devolvido).
 
 ## Desafios e aprendizados
 
